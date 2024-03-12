@@ -15,6 +15,10 @@ In this 'template' there are two routes one for user and other for admin both wi
 1. clone the project https://github.com/PS213073/laravel-multi-auth.git
 2. Composer Update
 3. Create new .env file 
-4. php artisan migrate:fresh --seed
-5. Npm run dev
-6. php artisan serve
+4. php artisan migrate
+5. php artisan migrate:fresh --seed
+6. npm run dev
+7. php artisan serve
+
+
+## Made with love from Daniel 
