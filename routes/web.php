@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+// use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\{
+    ProfileController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +37,16 @@ require __DIR__.'/auth.php';
 Route::get('/admin/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('admin.dashboard');
+
+Route::namespace('App\Http\Controllers\Admin')->name('admin.')->prefix('admin')
+    ->group(function(){
+        Route::resource('roles','RoleController');
+        Route::resource('permissions','PermissionController');
+        Route::resource('users','UserController');
+        Route::resource('posts','PostController');
+
+        Route::get('/profile',[ProfileController::class,'index'])->name('profile');
+        Route::put('/profile-update',[ProfileController::class,'update'])->name('profile.update');
+        // Route::get('/mail',[MailSettingController::class,'index'])->name('mail.index');
+        // Route::put('/mail-update/{mailsetting}',[MailSettingController::class,'update'])->name('mail.update');
+});
